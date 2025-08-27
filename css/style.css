@@ -531,7 +531,7 @@
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: radial-gradient(circle, rgba(149, 187, 27, 0.2) 0%, transparent 70%);
+/*       background: radial-gradient(circle, rgba(149, 187, 27, 0.2) 0%, transparent 70%); */
       opacity: 0.3;
     }
     .contact-info {
@@ -651,4 +651,5 @@
 
 .thin {
 	font-weight:200;
+
 }
