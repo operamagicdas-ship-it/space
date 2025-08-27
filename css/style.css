@@ -306,13 +306,13 @@
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: repeating-linear-gradient(
+/*       background: repeating-linear-gradient(
         45deg,
         transparent,
         transparent 10px,
         rgba(149, 187, 27, 0.03) 10px,
         rgba(149, 187, 27, 0.03) 20px
-      );
+      ); */
       opacity: 0.4;
     }
 
@@ -653,3 +653,4 @@
 	font-weight:200;
 
 }
+
