@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>KB LED Experience</title>
+	<link rel="icon" href="images/favicon.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@200;300;400&family=Russo+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <canvas id="bg"></canvas>
+
+  <div class="content">
+    <!--<h1>KB LED</h1>
+    <p style="color: #95bb1b;">The Light Experience</p>-->
+
+      <!-- Header -->
+  <header>
+    <div class="container header-inner">
+      <div class="logo">
+        <!-- KB <span>LED</span> -->
+        <a class="logo--link" href="https://www.kb-led-leuchten.de/" title="K+B LED Leuchten Shop - zur Startseite wechseln"> 
+          <picture> 
+            <source srcset="images/logo/logo-white.svg" media="(min-width: 78.75em)"> 
+            <source srcset="images/logo/logo-white.svg" media="(min-width: 64em)"> 
+            <source srcset="images/logo/logo-white.svg" media="(min-width: 48em)"> 
+            <img srcset="images/logo/logo-white.svg" alt="K+B LED Leuchten Shop - zur Startseite wechseln" title="K+B LED Leuchten Shop - zur Startseite wechseln"> 
+          </picture> 
+        </a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#produkte">Produkte</a></li>
+          <li><a href="#projekte">Projekte</a></li>
+          <li><a href="#unternehmen">Unternehmen</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+          <li><a href="#downloads">Downloads</a></li>
+          <!-- <li><button class="theme-toggle" id="themeToggle"><i class="fas fa-lightbulb"></i> Light</button></li> -->
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <!--<h1>Das Licht der Zukunft</h1>
+    <p>Intelligente LED-Beleuchtung mit deutscher Präzision – energieeffizient, langlebig, smart.</p>
+    <a href="#produkte" class="btn">Entdecken</a>-->
+    <div class="contentWrapper">
+        <div class="bg"></div>
+        <div class="barWrapper">
+          <div class="bar"></div>
+        </div>
+        <div class="contentWrapper">
+          <div class="mainContent flexCenter">
+            <div class="maskOut getCreative">
+              <div class="mask-group">
+                <div class="mask">
+                  <div><h1><span class="thin">INOVATIVE</span></h1></div>
+                </div>
+                <div class="mask">
+                  <div><h1>LED LEUCHTEN</h1></div>
+                </div>
+              </div>              
+            </div>
+            <div class="maskOut haveFun">
+              <div class="mask-group">
+                <div class="mask">
+                  <div><h5><span class="thin">MADE IN</span></h5></div>
+                </div>
+                <div class="mask">
+                  <div><h5>GERMANY</h5></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>        
+    </div>
+  </section>
+
+  <!-- Produkte -->
+  <section class="section bg-grid" id="produkte">
+    <div class="container">
+      <h2 class="section-title">Unsere Technologie</h2>
+      <div class="products-grid">
+        <div class="product-card">
+          <div class="product-img"><i class="fas fa-solar-panel"></i></div>
+          <div class="product-info">
+            <h3>Höchste Qualität</h3>
+            <p class="info-txt">Gesundes Licht ist eine Frage der Zutaten. Zutaten für die <strong>KB SILVERLINE.PRO LED Leuchten</strong> sind sowohl die herausragende Qualität der verwendeten LED als auch ein jahrzehntelanges Know-how in Elektronik und Steuerungstechnik. Damit schaffen unsere <strong>LED-Leuchtensysteme</strong> homogenes, flimmerfreies Arbeitslicht über die gesamte Lebensdauer der Leuchtmittel.</p>
+            <a href="#" class="btn btn-outline">Lighting Solutions</a>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-img"><i class="fas fa-vector-square"></i></div>
+          <div class="product-info">
+            <h3>Persönliche Beratung</h3>
+            <p class="info-txt">Zögern Sie nicht - jetzt Kontakt aufnehmen und kostenlos beraten lassen!<br>
+               Rufen Sie uns jetzt an:<br> <strong><a class="kontakt-link" href="tel:+49634393472-0">+49 6343 93472-0</a></strong><br> oder schreiben Sie eine E-Mail an:<br> <strong><a class="kontakt-link" href="mailto:info@kb-led-leuchten.de">info@kb-led-leuchten.de</a></strong><br> und vereinbaren Sie mit Unseren LED BELEUCHTUNG PROFIS einen Termin. Wir sind gespannt auf Ihr Projekt!</p>
+            <a href="#" class="btn btn-outline">Referenzen</a>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-img"><i class="fas fa-virus"></i></div>
+          <div class="product-info">
+            <h3>Nachhaltig</h3>
+            <p class="info-txt">Unsere <strong>KB SILVERLINE.PRO LED Leuchten</strong> sind nicht nur energieeffizient, sie sind auch nachhaltig in Produktion, Lichtmanagement und Wartung. Unsere <strong>LED Leuchtmittel</strong> sind nach ihrer langen Lebensdauer einfach mit ein paar Handgriffen austauschbar, sowohl Leuchte wie auch Installation bleiben <strong>resourcenschonend</strong> erhalten.</p>
+            <a href="#" class="btn btn-outline">LED Leuchten</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projekte -->
+  <section class="section bg-circuit" id="projekte">
+    <div class="container">
+      <h2 class="section-title">Echte Projekte</h2>
+      <h3 class="section-subtitle">Ein gesundes Licht für alle Bereiche Ihres Unternehmens!</h3>
+      <h4 class="section-subtitle">
+          Alles aus einer Hand - Intelligente LED Leuchten in TOP Qualität. Unsere Lichtplaner kümmern sich um die perfekte Ausleuchtung Ihrer Präsentations-, Arbeits-, Produktions- und Verkehrsflächen. Energieeffizienz, Sicherheit und Wohlbefinden stehen dabei im Mittelpunkt unserer Planungen. Bei uns bekommen Sie von der Konzeption bis zur Umsetzung alles aus einer verlässlichen Hand. Sie sagen „Es werde Licht“ und wir kümmern uns um den Rest.<br><br>
+          ‍Zögern Sie nicht - jetzt Kontakt aufnehmen und kostenlos beraten lassen!
+      </h4>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-img" style="background-image: url('images/projekte/kb-led-leuchten-led-arbeitsplatzbeleuchtung.jpg');"></div>
+          <div class="project-overlay">
+            <h3 class="project-title">Büro LED Beleuchtung</h3>
+            <p class="info-txt">Effiziente und ermüdungsfreie LED Beleuchtung für Büro nach DIN, dimmbar und mit Blendschutz.</p>
+            <a href="#" class="btn btn-outline">Mehr erfahren</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-img" style="background-image: url('images/projekte/kb-led-leuchten-led-flur-und-treppenbeleuchtung.jpg');"></div>
+          <div class="project-overlay">
+            <h3 class="project-title">Industrie LED Beleuchtung</h3>
+            <p class="info-txt">Energieeffiziente Produktionshallenbeleuchtung für ermüdungsfreies, sicheres Arbeiten.</p>
+            <a href="#" class="btn btn-outline">Mehr erfahren</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-img" style="background-image: url('images/projekte/kb-led-leuchten-led-hallen-lager-led-beleuchtung.jpg');"></div>
+          <div class="project-overlay">
+            <h3 class="project-title">Arbeitsplatz LED Beleuchtung</h3>
+            <p class="info-txt">Industrie-Arbeitsplatzbeleuchtung nach DIN, dimmbar und mit Blendschutz.</p>
+            <a href="#" class="btn btn-outline">Mehr erfahren</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-img" style="background-image: url('images/projekte/kb-led-leuchten-led-industriebeleuchtung-led-hallenbeleuchtu.jpg');"></div>
+          <div class="project-overlay">
+            <h3 class="project-title">Meetingraum Beleuchtung</h3>
+            <p class="info-txt">Elegante und energieeffiziente Meeting- und Konferezraumbeleuchtung</p>
+            <a href="#" class="btn btn-outline">Mehr erfahren</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-img" style="background-image: url('images/projekte/kb-led-leuchten-led-verkaufsraum-led-beleuchtung.jpg');"></div>
+          <div class="project-overlay">
+            <h3 class="project-title">Verkaufsraum Beleuchtung</h3>
+            <p class="info-txt">Energieeffiziente LED Verkaufsraumbeleuchtung mit perfekter Warenpräsentation</p>
+            <a href="#" class="btn btn-outline">Mehr erfahren</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-img" style="background-image: url('images/projekte/kb-led-leutchen-buero-led-beleuchtung-buero-led-lampen-1.jpg');"></div>
+          <div class="project-overlay">
+            <h3 class="project-title">Lager Beleuchtung</h3>
+            <p class="info-txt">Energieeffiziente LED Lagerhallenbeleuchtungmit Anwesenheits-Schaltung.</p>
+            <a href="#" class="btn btn-outline">Mehr erfahren</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Unternehemen -->
+  <section class="section" id="unternehmen">
+    <div class="container">
+      <h2 class="section-title">Über uns</h2>
+      <div class="about-content">
+        <div>
+          <img src="images/projekte/team.jpg" alt="Team">
+        </div>
+        <div class="info-txt">
+          <h3>Innovation meets Precision</h3><br>
+          <p>Seit 2008 entwickeln wir zukunftsweisende LED-Lösungen für Industrie, Gewerbe und öffentliche Einrichtungen.</p>
+          <p>Jedes Produkt durchläuft strenge Tests auf Haltbarkeit, Effizienz und Sicherheit – Made in Germany.</p><br>
+          <p>
+            <strong>Das intelligente LED-Lichtsystem für alle Arbeits- und Verkehrsbereiche Ihres Unternehmen.</strong>
+          </p>
+          <p>Mit unserem neuen KB SILVERLINE.PRO LED LEUCHTEN decken wir alle Beleuchtungsanforderungen Ihres Unternehmens ab: Von der Verwaltung bis zu Produktion und Lager bringt unser System die erforderliche Lichtstärke und Farbtemperatur in Verkehrsbereiche und auf Arbeitsplätze.
+          </p><br>
+          <p>
+            Elegant im Design, durchdacht konstruiert, variabel, einfach in der Montage und „Made in Germany“. Verschiedene Längen kombinierbar einfach erweiterbar, auch nachträglich! Schön, schlank und anwenderfreundlich: KB SILVERLINE.PRO LED LEUCHTEN - die helle Freude!
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Downloads -->
+  <section class="section" id="downloads">
+    <div class="container">
+      <h2 class="section-title">Downloads</h2>
+      <div class="downloads-list">
+        <a href="#" class="download-item">
+          <div class="download-icon"><i class="fas fa-file-pdf"></i></div>
+          <div><strong>Katalog 2025</strong> – alle Produkte (PDF, 8 MB)</div>
+        </a>
+        <a href="#" class="download-item">
+          <div class="download-icon"><i class="fas fa-cube"></i></div>
+          <div><strong>3D-Modelle</strong> – für Planer (ZIP)</div>
+        </a>
+        <a href="#" class="download-item">
+          <div class="download-icon"><i class="fas fa-certificate"></i></div>
+          <div><strong>Zertifikate</strong>  – CE, RoHS, ISO (PDF)</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kontakt -->
+  <section class="section" id="kontakt">
+    <div class="container">
+      <h2 class="section-title">Kontakt</h2>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3>Wir sind für Sie da</h3>
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>Düsseldorf, Deutschland</div>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <div>+49 211 1234567</div>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <div>info@kb-led-leuchten.de</div>
+          </div>
+        </div>
+        <form class="contact-form">
+          <input class="input-bg" type="text" placeholder="Name" required>
+          <input class="input-bg" type="email" placeholder="E-Mail" required>
+          <textarea class="input-bg" rows="4" placeholder="Nachricht"></textarea>
+          <button type="submit" class="btn">Senden</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 30px;">
+        <div class="logo">KB SILVER.PRO</div>
+        <p style="color: #888; margin: 10px 0;">Das Licht der Zukunft</p>
+      </div>
+      <div style="text-align: center; color: #888; font-size: 0.9rem;">
+        &copy; 2025 KB LED Leuchten GmbH. Alle Rechte vorbehalten.
+      </div>
+    </div>
+  </footer>
+
+  </div>
+
+  <script>
+    // === Three.js: Светодинамический фон ===
+    const canvas = document.getElementById('bg');
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+
+    // Светодиодная нить
+    const geometry = new THREE.BufferGeometry();
+    const count = 500;
+    const positions = new Float32Array(count * 3);
+    for (let i = 0; i < count * 3; i++) {
+      positions[i] = (Math.random() - 0.5) * 10;
+    }
+    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+    const material = new THREE.PointsMaterial({
+      color: 0x95bb1b,
+      size: 0.05,
+      transparent: true,
+      opacity: 0.8,
+      blending: THREE.AdditiveBlending
+    });
+
+    const points = new THREE.Points(geometry, material);
+    scene.add(points);
+    camera.position.z = 5;
+
+    // Анимация мерцания
+    function animate() {
+      requestAnimationFrame(animate);
+      points.rotation.x += 0.001;
+      points.rotation.y += 0.002;
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    // GSAP: Плавное появление
+    gsap.from("h1", { opacity: 0, y: 50, duration: 1.5, ease: "power3.out" });
+    gsap.from("p", { opacity: 0, y: 30, delay: 0.5, duration: 1, ease: "power2.out" });
+
+    // Адаптация
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+  </script>
+
+  <script>
+    const tl = gsap
+      .timeline({ repeat: 100, repeatDelay: 1 })
+      .from(".mask div", {
+        xPercent: gsap.utils.wrap([100, -100]),
+        stagger: 0.4,
+        opacity: 0,
+        ease: "circ.inOut"
+      })
+      .to(
+        ".mask div",
+        {
+          opacity: 0,
+          yPercent: gsap.utils.wrap([-100, 100]),
+          duration: 1,
+          ease:"none"
+        },
+        ">3"
+      );
+
+    gsap.fromTo(".bar", {x:-200}, {x:200, duration:20, ease:"none", repeat:3, yoyo:true})
+
+  </script>
+
+</body>
+</html>
