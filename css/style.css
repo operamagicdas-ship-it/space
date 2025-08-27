@@ -199,12 +199,80 @@
         left: 0;
         top: 0;
     }
-    picture {
+    /* picture {
         filter: drop-shadow(4px 2px 0px #95bb1b) invert(1) hue-rotate(171deg);
-    }
-    picture img{
+    } */
+    /* picture img{
         filter: drop-shadow(2px 4px 6px black);
-    }
+    } */
+
+    /* .logo img {
+      filter: invert(54%) sepia(94%) saturate(749%) hue-rotate(38deg) brightness(97%) contrast(101%);
+    } */
+
+    /* .logo img {
+      filter:
+        invert(54%) sepia(94%) saturate(749%) hue-rotate(38deg) brightness(97%) contrast(101%)
+        drop-shadow(0 0 16px #b8e05b)
+        drop-shadow(0 0 32px #95bb1b);
+      transition: filter 0.4s;
+    } */
+
+    /* .logo img {
+  filter:
+    invert(54%) sepia(94%) saturate(749%) hue-rotate(38deg) brightness(97%) contrast(101%)
+    drop-shadow(0 0 16px #b8e05b)
+    drop-shadow(0 0 32px #95bb1b);
+  transition: filter 0.4s;
+} */
+
+    .logo img {
+        filter:
+          invert(54%) sepia(94%) saturate(749%) hue-rotate(38deg) brightness(97%) contrast(101%)
+          drop-shadow(0 0 16px #b8e05b)
+          drop-shadow(0 0 32px #95bb1b);
+        transition: filter 0.4s;
+        animation: logoGlow 2s infinite alternate;
+      }
+
+      @keyframes logoGlow {
+        0% {
+          filter:
+            invert(54%) sepia(94%) saturate(749%) hue-rotate(38deg) brightness(97%) contrast(101%)
+            drop-shadow(0 0 8px #b8e05b)
+            drop-shadow(0 0 16px #95bb1b);
+        }
+        100% {
+          filter:
+            invert(54%) sepia(94%) saturate(749%) hue-rotate(38deg) brightness(97%) contrast(101%)
+            drop-shadow(0 0 32px #b8e05b)
+            drop-shadow(0 0 64px #95bb1b);
+        }
+      }
+
+    /* .logo img {
+  filter:
+    brightness(0)
+    drop-shadow(0 0 16px #b8e05b)
+    drop-shadow(0 0 32px #95bb1b);
+  transition: filter 0.4s;
+  animation: logoGlow 2s infinite alternate;
+}
+
+@keyframes logoGlow {
+  0% {
+    filter:
+      brightness(0)
+      drop-shadow(0 0 8px #b8e05b)
+      drop-shadow(0 0 16px #95bb1b);
+  }
+  100% {
+    filter:
+      brightness(0)
+      drop-shadow(0 0 32px #b8e05b)
+      drop-shadow(0 0 64px #95bb1b);
+  }
+} */
 
     nav {
         position: relative;
@@ -236,6 +304,12 @@
 
     nav a:hover::after {
       width: 100%;
+    }
+
+    nav a.active {
+      color: var(--primary-glow);
+      font-weight: 700;
+      text-shadow: 0 0 10px var(--primary-glow);
     }
 
     nav ul::before {
@@ -306,7 +380,7 @@
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
-/*       background: repeating-linear-gradient(
+      /* background: repeating-linear-gradient(
         45deg,
         transparent,
         transparent 10px,
@@ -392,9 +466,9 @@
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: 
+      /* background: 
         linear-gradient(135deg, transparent 95%, rgba(149, 187, 27, 0.1) 95%),
-        linear-gradient(45deg, transparent 95%, rgba(149, 187, 27, 0.1) 95%);
+        linear-gradient(45deg, transparent 95%, rgba(149, 187, 27, 0.1) 95%); */
       background-size: 100px 100px;
       opacity: 0.3;
     }
@@ -504,7 +578,7 @@
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: conic-gradient(from 0deg, transparent, rgba(149, 187, 27, 0.05), transparent 30%);
+      /* background: conic-gradient(from 0deg, transparent, rgba(149, 187, 27, 0.05), transparent 30%); */
       animation: rotate 12s linear infinite;
       opacity: 0.4;
     }
@@ -531,7 +605,7 @@
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
-/*       background: radial-gradient(circle, rgba(149, 187, 27, 0.2) 0%, transparent 70%); */
+      /* background: radial-gradient(circle, rgba(149, 187, 27, 0.2) 0%, transparent 70%); */
       opacity: 0.3;
     }
     .contact-info {
@@ -558,13 +632,13 @@
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: repeating-linear-gradient(
+      /* background: repeating-linear-gradient(
         90deg,
         transparent,
         transparent 20px,
         rgba(149, 187, 27, 0.05) 20px,
         rgba(149, 187, 27, 0.05) 40px
-      );
+      ); */
       opacity: 0.2;
     }
 
@@ -651,6 +725,4 @@
 
 .thin {
 	font-weight:200;
-
 }
-
