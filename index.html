@@ -348,5 +348,88 @@
 
   </script>
 
+  
+<script>
+  // Intersection Observer + GSAP для плавного появления секций
+  document.addEventListener("DOMContentLoaded", () => {
+    const sections = document.querySelectorAll(".section");
+    const options = { threshold: 0.2 };
+
+    // const observer = new IntersectionObserver((entries) => {
+    //   entries.forEach(entry => {
+    //     if (entry.isIntersecting && !entry.target.classList.contains("animated")) {
+    //       gsap.to(entry.target, { opacity: 1, y: 0, duration: 1, ease: "power2.out" });
+    //       entry.target.classList.add("animated");
+    //     }
+    //   });
+    // }, options);
+
+    // const observer = new IntersectionObserver((entries) => {
+    //   entries.forEach(entry => {
+    //     if (entry.isIntersecting && !entry.target.classList.contains("animated")) {
+    //       gsap.to(entry.target, { 
+    //         opacity: 1, 
+    //         y: 0, 
+    //         duration: 2,      // увеличено время анимации
+    //         delay: 0.2,       // небольшая задержка
+    //         ease: "power2.out" 
+    //       });
+    //       entry.target.classList.add("animated");
+    //     }
+    //   });
+    // }, options);
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          gsap.fromTo(entry.target, 
+            { opacity: 0, y: 80 }, 
+            { opacity: 1, y: 0, duration: 2, delay: 0.2, ease: "power2.out" }
+          );
+        } else {
+          gsap.to(entry.target, { opacity: 0, y: 80, duration: 1, ease: "power2.in" });
+        }
+      });
+    }, options);
+
+    sections.forEach(section => {
+      gsap.set(section, { opacity: 0, y: 80 }); // стартовое положение: ниже и прозрачное
+      observer.observe(section);
+    });
+  });
+</script>
+
+
+<script>
+  // Подсветка активного пункта меню при скролле
+  document.addEventListener("DOMContentLoaded", () => {
+    const navLinks = document.querySelectorAll("nav a[href^='#']");
+    const sections = Array.from(document.querySelectorAll(".section, .hero"));
+
+    const sectionIdMap = {};
+    sections.forEach(section => {
+      sectionIdMap[section.id] = section;
+    });
+
+    const highlightMenu = (activeId) => {
+      navLinks.forEach(link => {
+        link.classList.toggle("active", link.getAttribute("href") === "#" + activeId);
+      });
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          highlightMenu(entry.target.id);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+  });
+</script>
+
 </body>
 </html>
