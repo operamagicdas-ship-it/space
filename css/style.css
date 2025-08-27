@@ -430,17 +430,18 @@
     }
 
     .product-img {
-      height: 180px;
+      height: 140px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 60px;
       color: var(--primary);
-      /* background: rgba(149, 187, 27, 0.1); */
-      background-image: src("https://via.placeholder.com/300x180");
+      background: rgba(149, 187, 27, 0.1);
+      /* background-image: src("https://via.placeholder.com/300x180"); */
       object-fit: cover;
       background-repeat: no-repeat;
       background-size: cover;
+      filter: drop-shadow(2px 4px 6px);
     }
 
     .product-info {
