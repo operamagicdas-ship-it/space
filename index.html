@@ -189,7 +189,8 @@
       <h2 class="section-title">Über uns</h2>
       <div class="about-content">
         <div>
-          <img src="images/projekte/team.jpg" alt="Team">
+          <!-- <img src="images/projekte/team.jpg" alt="Team"> -->
+           <div class="emotion--element col-1 row-1 start-col-1 start-row-1 col-xs-12 start-col-xs-1 row-xs-4 start-row-xs-53 col-s-1 start-col-s-1 row-s-1 start-row-s-1 is--hidden-s col-m-12 start-col-m-1 row-m-7 start-row-m-52 col-l-12 start-col-l-1 row-l-7 start-row-l-52 col-xl-12 start-col-xl-1 row-xl-7 start-row-xl-52" style="padding-left: 0.625rem; padding-bottom: 0.625rem; height: 11.6667%; top: 85%;"> <div class="emotion--video" data-mode="cover" data-scaleoriginx="50" data-scaleoriginy="50" data-scale="1"> <video class="video--element" poster="" preload="" autoplay="" loop="" muted="" style="transform-origin: 50% 50%; transform: scaleX(1.4964) scaleY(1.4964);"><source src="https://www.kb-led-leuchten.de/media/video/33/b2/f0/k-b-leuchte-led-leuchten-tunable-white-technologie-1.webm" type="video/webm"><source src="https://www.kb-led-leuchten.de/media/video/33/b2/f0/k-b-leuchte-led-leuchten-tunable-white-technologie-1.webm" type="video/mp4"><source src="https://www.kb-led-leuchten.de/media/video/33/b2/f0/k-b-leuchte-led-leuchten-tunable-white-technologie-1.webm" type="video/ogg"></video> <a href="#play-video" class="video--cover" style="background-image: url(&quot;https://www.kb-led-leuchten.de/media/video/33/b2/f0/k-b-leuchte-led-leuchten-tunable-white-technologie-1.webm&quot;); display: none;"> <i class="video--play-icon icon--play"></i> </a> <a href="#play-video" class="video--play-btn" data-playiconcls="icon--play" data-pauseiconcls="icon--pause"> <i class="video--play-icon icon--pause"></i> </a> </div> </div>
         </div>
         <div class="info-txt">
           <h3>Innovation meets Precision</h3><br>
@@ -270,6 +271,42 @@
         &copy; 2025 KB LED Leuchten GmbH. Alle Rechte vorbehalten.
       </div>
     </div>
+
+	<div class="smart-chat-bot">
+		<button id="chat-toggle" aria-label="Open chat">💬</button>
+
+<div id="chatbox" role="dialog" aria-label="Chat widget">
+  <div id="chat-header">
+    <div class="header-left">      
+      <img id="chat-avatar" src="images/avatar-demiurg.jpg" alt="avatar">
+      <span id="chat-title">Assistent</span>
+    </div>
+
+    <select id="language" aria-label="Select language">
+      <option value="de">De</option>
+      <option value="ru">Ru</option>
+      <option value="en">En</option>
+    </select>
+
+    <div id="theme-menu">
+      <button id="theme-toggle" title="Выбор темы">⚙️</button>
+      <div id="theme-options" class="hidden">
+        <button data-theme="light" title="Светлая">☀️</button>
+        <button data-theme="dark" title="Тёмная">🌙</button>
+        <button data-theme="neutral" title="Нейтральная">🌀</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="messages" aria-live="polite"></div>
+
+  <div id="input">
+    <input type="text" id="userInput" placeholder="Nachricht eingeben..." aria-label="Message input">
+    <button onclick="sendMessage()" aria-label="Send">▶</button>
+  </div>
+</div>
+	
+	</div>
   </footer>
 
   </div>
@@ -387,13 +424,13 @@
             { opacity: 1, y: 0, duration: 2, delay: 0.2, ease: "power2.out" }
           );
         } else {
-          gsap.to(entry.target, { opacity: 0, y: 180, duration: 1, ease: "power2.in" });
+          gsap.to(entry.target, { opacity: 0, y: 80, duration: 1, ease: "power2.in" });
         }
       });
     }, options);
 
     sections.forEach(section => {
-      gsap.set(section, { opacity: 0, y: 180 }); // стартовое положение: ниже и прозрачное
+      gsap.set(section, { opacity: 0, y: 80 }); // стартовое положение: ниже и прозрачное
       observer.observe(section);
     });
   });
@@ -429,6 +466,166 @@
       observer.observe(section);
     });
   });
+</script>
+<script>
+  const toggleBtn = document.getElementById('chat-toggle');
+  const chatbox = document.getElementById('chatbox');
+  const messagesDiv = document.getElementById('messages');
+  const langSelect = document.getElementById('language');
+  const chatTitle = document.getElementById('chat-title');
+  const userInput = document.getElementById('userInput');
+  const avatarEl = document.getElementById('chat-avatar');
+
+  const texts = {
+    de: {
+      title: "Assistent",
+      placeholder: "Nachricht eingeben...",
+      greeting: "👋 Hallo! Wie kann ich helfen?",
+      error: "⚠ Verbindungsfehler mit dem Server."
+    },
+    ru: {
+      title: "Ассистент",
+      placeholder: "Напишите сообщение...",
+      greeting: "👋 Привет! Чем могу помочь?",
+      error: "⚠ Ошибка соединения с сервером."
+    },
+    en: {
+      title: "Assistant",
+      placeholder: "Type a message...",
+      greeting: "👋 Hi! How can I help you?",
+      error: "⚠ Connection error with the server."
+    }
+  };
+
+  let currentLang = "de";
+  let conversation = [];
+
+  // автоопределение языка
+  function detectLang() {
+    const browserLang = (navigator.language || navigator.userLanguage || 'de').slice(0,2).toLowerCase();
+    if (["de","ru","en"].includes(browserLang)) {
+      currentLang = browserLang;
+      langSelect.value = currentLang;
+    } else {
+      currentLang = "de";
+      langSelect.value = "de";
+    }
+    updateLang();
+  }
+
+  function updateLang() {
+    currentLang = langSelect.value;
+    chatTitle.textContent = texts[currentLang].title;
+    userInput.placeholder = texts[currentLang].placeholder;
+    renderMessages();
+  }
+
+  langSelect.addEventListener("change", updateLang);
+
+  // Открытие/закрытие
+  toggleBtn.addEventListener('click', () => {
+    chatbox.classList.toggle('active');
+    if (chatbox.classList.contains('active') && !chatbox.dataset.greeted) {
+      setTimeout(() => {
+        addMessage(
+          { de: texts.de.greeting, ru: texts.ru.greeting, en: texts.en.greeting },
+          'bot'
+        );
+      }, 400);
+      chatbox.dataset.greeted = "true";
+    }
+  });
+
+  async function sendMessage() {
+    const msg = userInput.value.trim();
+    if (!msg) return;
+
+    addMessage({ [currentLang]: msg }, 'user');
+    userInput.value = '';
+
+    const typing = document.createElement('div');
+    typing.className = 'typing-indicator bot';
+    typing.innerHTML = "<span></span><span></span><span></span>";
+    messagesDiv.appendChild(typing);
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+
+    try {
+      const res = await fetch("https://ВАШ-ДОМЕН/webhook/chatbot", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: msg, lang: currentLang })
+      });
+      const data = await res.json();
+      messagesDiv.removeChild(typing);
+
+      // ожидаем, что сервер вернёт { reply: { de: "...", ru: "...", en: "..." } }
+      addMessage(data.reply, 'bot');
+    } catch (e) {
+      messagesDiv.removeChild(typing);
+      addMessage(
+        { de: texts.de.error, ru: texts.ru.error, en: texts.en.error },
+        'bot'
+      );
+    }
+  }
+
+  function addMessage(textObj, sender) {
+    conversation.push({ sender, text: textObj });
+    renderMessages();
+  }
+
+  function renderMessages() {
+    messagesDiv.innerHTML = "";
+    conversation.forEach(msg => {
+      const div = document.createElement('div');
+      div.className = 'msg ' + msg.sender;
+      div.textContent = msg.text[currentLang] || msg.text["de"] || "";
+      messagesDiv.appendChild(div);
+    });
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+  }
+
+
+  detectLang();
+</script>
+
+
+<script>  
+  const themeButtons = document.querySelectorAll('#theme-switcher button, #theme-options button');
+  const rootEl = document.documentElement;
+  const themeToggleBtn = document.getElementById('theme-toggle');
+  const themeOptions = document.getElementById('theme-options');
+  
+  function applyTheme(theme) {
+    rootEl.setAttribute('data-theme', theme);
+    localStorage.setItem('chatTheme', theme);
+  }
+  
+  function initTheme() {
+    const savedTheme = localStorage.getItem('chatTheme');
+    if (savedTheme) {
+      applyTheme(savedTheme);
+    } else {
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      applyTheme(prefersDark ? 'dark' : 'light');
+    }
+  }
+  
+  themeButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const theme = btn.getAttribute('data-theme');
+      applyTheme(theme);
+      if (themeOptions) themeOptions.classList.add('hidden'); 
+    });
+  });
+  
+  if (themeToggleBtn && themeOptions) {
+    themeToggleBtn.addEventListener('click', () => {
+      themeOptions.classList.toggle('hidden');
+    });
+  }
+  
+  initTheme();
 </script>
 
 </body>
