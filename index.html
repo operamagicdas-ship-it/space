@@ -632,39 +632,38 @@
 const webhookUrl = "https://n8n.novum-software.de/webhook/246f4c72-9dbe-444f-bb81-6e7865afedfe";
 
 async function sendMessage() {
-  const input = document.getElementById('userInput');
-  const text = input.value.trim();
-  if (!text) return;
+  const input = document.getElementById("userInput");
+  const message = input.value.trim();
+  if (!message) return;
 
-  input.value = '';
-  addMessage('user', text);
+  addMessage("user", message);
+  input.value = "";
 
   try {
     const res = await fetch(webhookUrl, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message: text })
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ chat_message: message })
     });
 
     const data = await res.json();
-    addMessage('bot', data.reply || '(нет ответа)');
+    addMessage("bot", data.reply || "Ассистент не ответил 😕");
   } catch (err) {
-    addMessage('bot', '(ошибка соединения с сервером)');
+    console.error("Ошибка:", err);
+    addMessage("bot", "Ошибка соединения с сервером");
   }
 }
 
-function addMessage(sender, text) {
-  const div = document.createElement('div');
-  div.className = sender;
+function addMessage(role, text) {
+  const messages = document.getElementById("messages");
+  const div = document.createElement("div");
+  div.className = role === "user" ? "msg user" : "msg bot";
   div.textContent = text;
-  document.getElementById('messages').appendChild(div);
+  messages.appendChild(div);
+  messages.scrollTop = messages.scrollHeight;
 }
-
-
-document.getElementById('userInput').addEventListener('keydown', (e) => {
-  if (e.key === 'Enter') sendMessage();
-});
 </script>
+
 
 
 </body>
