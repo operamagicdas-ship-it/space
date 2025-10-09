@@ -628,7 +628,7 @@
   initTheme();
 </script>
 
-	<script>
+<script>
 const webhookUrl = "https://n8n.novum-software.de/webhook/246f4c72-9dbe-444f-bb81-6e7865afedfe";
 
 async function sendMessage() {
@@ -660,7 +660,7 @@ function addMessage(sender, text) {
   document.getElementById('messages').appendChild(div);
 }
 
-// Отправка по Enter
+
 document.getElementById('userInput').addEventListener('keydown', (e) => {
   if (e.key === 'Enter') sendMessage();
 });
