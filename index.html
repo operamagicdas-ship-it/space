@@ -646,10 +646,10 @@
       });
 
       const data = await res.json();
-      addMessage("bot", data.reply || "Ассистент не ответил 😕");
+      addMessage("assistant", data.reply || "Ассистент не ответил 😕");
     } catch (err) {
       console.error("Ошибка:", err);
-      addMessage("bot", "Ошибка соединения с сервером");
+      addMessage("assistant", "Ошибка соединения с сервером");
     }
   }
 
@@ -661,6 +661,8 @@
     messages.appendChild(div);
     messages.scrollTop = messages.scrollHeight;
   }
+
+  appendMessage('assistant', 'Здравствуйте — я менеджер-ассистент. Задайте вопрос или укажите инструкцию.');
 </script>
 
 
