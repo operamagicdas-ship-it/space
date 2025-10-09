@@ -275,36 +275,37 @@
 	<div class="smart-chat-bot">
 		<button id="chat-toggle" aria-label="Open chat">💬</button>
 
-	    <div id="chatbox" role="dialog" aria-label="Chat widget">
-	      <div id="chat-header">
-	        <div class="header-left">      
-	          <img id="chat-avatar" src="images/avatar.jpg" alt="avatar">
-	          <span id="chat-title">Assistent</span>
-	        </div>
+    <div id="chatbox" role="dialog" aria-label="Chat widget">
+      <div id="chat-header">
+        <div class="header-left">      
+          <img id="chat-avatar" src="images/avatar.jpg" alt="avatar">
+          <span id="chat-title">Assistent</span>
+        </div>
+
+        <select id="language" aria-label="Select language">
+          <option value="de">De</option>
+          <option value="ru">Ru</option>
+          <option value="en">En</option>
+        </select>
+
+        <div id="theme-menu">
+          <button id="theme-toggle" title="Выбор темы">⚙️</button>
+          <div id="theme-options" class="hidden">
+            <button data-theme="light" title="Светлая">☀️</button>
+            <button data-theme="dark" title="Тёмная">🌙</button>
+            <button data-theme="neutral" title="Нейтральная">🌀</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="messages" aria-live="polite"></div>
+
+      <div id="input">
+        <input type="text" id="userInput" placeholder="Nachricht eingeben..." aria-label="Message input">
+        <button onclick="sendMessage()" aria-label="Send">▶</button>
+      </div>
+    </div>
 	
-	        <select id="language" aria-label="Select language">
-	          <option value="de">De</option>
-	          <option value="ru">Ru</option>
-	          <option value="en">En</option>
-	        </select>
-	
-	        <div id="theme-menu">
-	          <button id="theme-toggle" title="Выбор темы">⚙️</button>
-	          <div id="theme-options" class="hidden">
-	            <button data-theme="light" title="Светлая">☀️</button>
-	            <button data-theme="dark" title="Тёмная">🌙</button>
-	            <button data-theme="neutral" title="Нейтральная">🌀</button>
-	          </div>
-	        </div>
-	      </div>
-	
-	      <div id="messages" aria-live="polite"></div>
-	
-	      <div id="input">
-	        <input type="text" id="userInput" placeholder="Nachricht eingeben..." aria-label="Message input">
-	        <button onclick="sendMessage()" aria-label="Send">▶</button>
-	      </div>
-	    </div>	
 	</div>
   </footer>
 
@@ -662,7 +663,10 @@
     messages.scrollTop = messages.scrollHeight;
   }
 
-  appendMessage('assistant', 'Здравствуйте — я менеджер-ассистент. Задайте вопрос ...');
+  document.addEventListener("DOMContentLoaded", () => {
+    addMessage('assistant', 'Здравствуйте — я менеджер-ассистент. Задайте вопрос ...');
+  });
+
 </script>
 
 
