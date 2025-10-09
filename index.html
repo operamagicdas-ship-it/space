@@ -627,6 +627,39 @@
   
   initTheme();
 </script>
+<script>
+const webhookUrl = "https://n8n.novum-software.de/webhook/246f4c72-9dbe-444f-bb81-6e7865afedfe";
+
+document.getElementById('input').addEventListener('keydown', async (e) => {
+  if (e.key === 'Enter') {
+    const text = e.target.value.trim();
+    if (!text) return;
+
+    e.target.value = '';
+    addMessage('user', text);
+
+    try {
+      const res = await fetch(webhookUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: text })
+      });
+
+      const data = await res.json();
+      addMessage('bot', data.reply || '(нет ответа)');
+    } catch (err) {
+      addMessage('bot', '(ошибка соединения с сервером)');
+    }
+  }
+});
+
+function addMessage(sender, text) {
+  const div = document.createElement('div');
+  div.className = sender;
+  div.textContent = text;
+  document.getElementById('messages').appendChild(div);
+}
+</script>
 
 </body>
 </html>
