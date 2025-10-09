@@ -627,31 +627,31 @@
   
   initTheme();
 </script>
-<script>
+
+	<script>
 const webhookUrl = "https://n8n.novum-software.de/webhook/246f4c72-9dbe-444f-bb81-6e7865afedfe";
 
-document.getElementById('input').addEventListener('keydown', async (e) => {
-  if (e.key === 'Enter') {
-    const text = e.target.value.trim();
-    if (!text) return;
+async function sendMessage() {
+  const input = document.getElementById('userInput');
+  const text = input.value.trim();
+  if (!text) return;
 
-    e.target.value = '';
-    addMessage('user', text);
+  input.value = '';
+  addMessage('user', text);
 
-    try {
-      const res = await fetch(webhookUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: text })
-      });
+  try {
+    const res = await fetch(webhookUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: text })
+    });
 
-      const data = await res.json();
-      addMessage('bot', data.reply || '(нет ответа)');
-    } catch (err) {
-      addMessage('bot', '(ошибка соединения с сервером)');
-    }
+    const data = await res.json();
+    addMessage('bot', data.reply || '(нет ответа)');
+  } catch (err) {
+    addMessage('bot', '(ошибка соединения с сервером)');
   }
-});
+}
 
 function addMessage(sender, text) {
   const div = document.createElement('div');
@@ -659,7 +659,13 @@ function addMessage(sender, text) {
   div.textContent = text;
   document.getElementById('messages').appendChild(div);
 }
+
+// Отправка по Enter
+document.getElementById('userInput').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') sendMessage();
+});
 </script>
+
 
 </body>
 </html>
