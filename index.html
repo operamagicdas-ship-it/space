@@ -14,8 +14,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@200;300;400&family=Russo+One&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
-
   <link rel="stylesheet" href="css/style-chatbot.css">
+  <link rel="stylesheet" href="css/style-newsletter.css">
 
 </head>
 <body>
@@ -304,7 +304,7 @@
           </div>
         </div>
 
-	<button id="chatClose" title="Close chat" aria-label="Close chat">✖</button>
+	      <button id="chatClose" title="Close chat" aria-label="Close chat">✖</button>
 
         <div id="messages" aria-live="polite"></div>
 
@@ -314,12 +314,31 @@
         </div>
       </div>	
     </div>
-  </div>
 
+    <!-- Newsletter Button -->
+    <div class="div-newsletter">
+        <button class="fab" id="fab" aria-label="open form">
+          <span class="fab-icon">✉️</span>
+        </button>
+        <div class="slide-panel" id="slidePanel">
+          <div class="panel-header">
+            <div class="panel-title">News abonnieren</div>
+            <button class="close-btn" id="closeBtn" aria-label="Закрыть">✖</button>
+          </div>
+          <div class="panel-body">
+            <iframe 
+              src="https://www.skitreff.de/novum-newsletter-voucher-system/embed/form.html" 
+              title="Skitreff Newsletter"
+              loading="lazy"
+              sandbox="allow-forms allow-scripts allow-same-origin"
+              ></iframe>
+          </div>
+        </div>      
+    </div>
+  </div>
 	<script type="text/javascript" src="js/script.js"></script>
 	<script type="text/javascript" src="js/webassistent.js"></script>
-
-<!--<script type="text/javascript" src="js/main.js"></script>-->
+  <script type="text/javascript" src="js/btn-newsletter.js"></script>
 
 </body>
 </html>
