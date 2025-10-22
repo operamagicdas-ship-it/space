@@ -20,6 +20,7 @@
     animation:pulse 2.5s infinite;
     transition:transform .25s ease, box-shadow .25s ease;
     z-index:999;
+    font-family: 'Orbitron', sans-serif;
   }
   .div-newsletter .fab:hover{
     transform:translateX(-50%) scale(1.1);
