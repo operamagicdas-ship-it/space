@@ -55,6 +55,13 @@
     transition:transform .45s cubic-bezier(.2,.8,.2,1),opacity .3s ease;
     pointer-events:none;
   }
+
+.div-newsletter .slide-panel.open {
+  transform: translateY(0) translateX(-50%) scale(1);
+  opacity: 1;
+  pointer-events: auto;
+}
+
   .div-newsletter .slide-panel.visible{
     transform:translateX(-50%) translateY(0);
     opacity:1;
@@ -79,7 +86,7 @@
   }
   .div-newsletter .close-btn{
     border:none;
-    background:rgba(0,0,0,0.05);
+    /* background:rgba(0,0,0,0.05); */
     border-radius:50%;
     width:36px;
     height:36px;
@@ -101,6 +108,7 @@
     border:0;
     width:100%;
     height:100%;
+    display: block;
   }
 
 
@@ -121,3 +129,101 @@
     scale: .7;
     padding: 50px;
   }
+
+  .close-btn {
+  background: transparent;
+  border: 0;
+  color: #0f97cd;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.no-scroll { overflow: hidden; }
+
+
+
+
+
+/* --- Доп. адаптив и доступность для Newsletter --- */
+
+/* Центрирование fab и видимая позиция на всех экранах */
+.div-newsletter .fab {
+  bottom: 20px; /* ранее было -15px — делаем видимым */
+  width: 260px;
+  padding: 16px 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  touch-action: manipulation;
+}
+
+/* Фокус и повышение кликабельности */
+.div-newsletter .fab:focus-visible,
+.div-newsletter .close-btn:focus-visible {
+  outline: 3px solid rgba(149,187,27,0.25);
+  outline-offset: 4px;
+  border-radius: 12px;
+}
+
+/* Упростить heavy backdrop/animation на слабых устройствах */
+@media (max-width: 900px) {
+  .div-newsletter .slide-panel {
+    width: 94%;
+    height: 88vh;
+    border-radius: 14px 14px 0 0;
+    transform: translateX(-50%) translateY(100%);
+  }
+  .div-newsletter .fab { width: 220px; font-size: 14px; }
+}
+
+/* Мобильные: панель во весь экран по высоте, кнопка FAB компактнее */
+@media (max-width: 600px) {
+  .div-newsletter .fab {
+    width: 64px;
+    height: 64px;
+    padding: 0;
+    bottom: 18px;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    font-size: 18px;
+  }
+
+  .div-newsletter .fab .fab-icon { display:block; }
+
+  .div-newsletter .slide-panel {
+    left: 50%;
+    bottom: 0;
+    width: 100%;
+    max-width: 100%;
+    height: calc(100vh - 12px);
+    transform: translateX(-50%) translateY(100%);
+    border-radius: 12px 12px 0 0;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .div-newsletter .panel-header {
+    padding: 12px 14px;
+  }
+
+  .div-newsletter .panel-body { height: calc(100% - 56px); }
+}
+
+/* Уменьшение анимаций по предпочтению пользователя */
+@media (prefers-reduced-motion: reduce) {
+  .div-newsletter .fab,
+  .div-newsletter .slide-panel,
+  .div-newsletter .slide-panel iframe {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Небольшие улучшения отображения на планшетах */
+@media (min-width: 901px) and (max-width: 1300px) {
+  .div-newsletter .slide-panel { width: min(760px, calc(100% - 48px)); }
+}
+
+/* Убедимся, что при открытой панели прокрутка блокируется на мобильных */
+html.no-scroll, body.no-scroll {
+  touch-action: none;
+  overscroll-behavior: none;
+}
