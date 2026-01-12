@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
     sessionStorage.setItem('chat_lang', currentLang);
   }
 
-  // --- Добавление сообщений ---
+  /*
   function addMessage(role, text, replaceLastBot = false) {
     if (replaceLastBot && role === 'bot') {
       const last = messagesEl.lastElementChild;
@@ -100,7 +100,51 @@ document.addEventListener("DOMContentLoaded", function () {
     messagesEl.scrollTop = messagesEl.scrollHeight;
     saveChat();
   }
+*/
+  /* Замените функцию addMessage в вашем webassistent.js на эту версию */
 
+function addMessage(role, text, replaceLastBot = false) {
+  if (replaceLastBot && role === 'bot') {
+    const last = messagesEl.lastElementChild;
+    if (last && last.classList.contains('msg') && last.classList.contains('bot')) {
+      // Применяем форматирование для ссылок
+      last.innerHTML = formatBotText(text); 
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+      saveChat();
+      return;
+    }
+  }
+
+  const div = document.createElement('div');
+  div.className = 'msg ' + (role === 'user' ? 'user' : 'bot');
+
+  if (role === 'bot') {
+    // Применяем форматирование для ссылок
+    div.innerHTML = formatBotText(text);
+  } else {
+    div.textContent = text;
+  }
+
+  messagesEl.appendChild(div);
+  messagesEl.scrollTop = messagesEl.scrollHeight;
+  saveChat();
+}
+
+/**
+ * Вспомогательная функция для превращения Markdown-ссылок в HTML
+ */
+function formatBotText(text) {
+  if (!text) return "";
+
+  // 1. Регулярное выражение находит [текст](ссылка) и делает из него <a href="...">
+  // Оно учитывает отсутствие пробела между ] и (, как требуется в Markdown
+  let formatted = text.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, function(match, name, url) {
+    return `<a href="${url}" target="_blank" rel="noopener noreferrer" style="color: #004a99; text-decoration: underline; font-weight: bold;">${name}</a>`;
+  });
+
+  // 2. Превращаем обычные переносы строк в <div> для сохранения структуры
+  return formatted.split('\n').map(line => `<div>${line}</div>`).join('');
+}
   // --- Приветствие ---
   function getRandomGreeting(lang) {
     const msgs = greetingMessages[lang] || greetingMessages.de;
