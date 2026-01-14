@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
     saveChat();
   }
 */
-  /* Замените функцию addMessage в вашем webassistent.js на эту версию */
+  
 
 function addMessage(role, text, replaceLastBot = false) {
   if (replaceLastBot && role === 'bot') {
@@ -188,7 +188,11 @@ async function sendMessage() {
       })
     });
 
-    const data = await res.json().catch(() => ({}));
+   // const data = await res.json().catch(() => ({}));
+
+const text = await res.text();
+addMessage('bot', text || getRandomGreeting(currentLang));
+    
 
     clearTimeout(typingTimer);
     if (typingDiv) typingDiv.remove();
