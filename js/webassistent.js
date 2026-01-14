@@ -191,21 +191,22 @@ async function sendMessage() {
    // const data = await res.json().catch(() => ({}));
 
 const text = await res.text();
-addMessage('bot', text || getRandomGreeting(currentLang));
+    
+//addMessage('bot', text || getRandomGreeting(currentLang));
     
 
     clearTimeout(typingTimer);
     if (typingDiv) typingDiv.remove();
-
+      addMessage('bot', text || getRandomGreeting(currentLang));
     // обработка ответа от n8n
-    if (data.products && Array.isArray(data.products)) {
+  /*  if (data.products && Array.isArray(data.products)) {
       // если вернулся список товаров — карточка/слайдер
       if (data.products.length === 1) addProductCard(data.products[0]);
       else addProductSlider(data.products);
     } else {
       // ⚠️ просто показываем ответ, НЕ отправляем обратно в n8n
       addMessage('bot', data.reply || getRandomGreeting(currentLang));
-    }
+    }*/
 
   } catch (err) {
     clearTimeout(typingTimer);
