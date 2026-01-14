@@ -135,14 +135,31 @@ function addMessage(role, text, replaceLastBot = false) {
  */
 function formatBotText(text) {
   if (!text) return "";
+  
   let formatted = text
+    
     // 1. Ссылки: [Название](ссылка) -> <a href="...">
-    .replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, (match, name, url) => {
-      return `<a href="${url}" target="_blank" rel="noopener noreferrer" style="color: #004a99; text-decoration: underline; font-weight: bold;">${name}</a>`;
-    })
+    //.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, (match, name, url) => {
+      //return `<a href="${url}" target="_blank" rel="noopener noreferrer" style="color: #004a99; text-decoration: underline; font-weight: bold;">${name}</a>`;
+   // })
     // 2. Жирный текст: **текст** -> <strong>текст</strong>
-    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+   // .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
     // 3. Переносы строк: заменяем \n на <br> (это уберет наложение текста)
+    //.replace(/\n/g, '<br>');
+
+  // 1. Исправляем двойные слэши (напр. .de//path -> .de/path)
+    .replace(/(https?:\/\/www\.skitreff\.de)\/+/g, '$1/')
+    
+    // 2. Ссылки: вырезаем URL и чистим его от мусора (точки/скобки в конце)
+    .replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, (match, name, url) => {
+      let cleanUrl = url.replace(/[.,!?;:)]+$/, ''); // Чистим хвост ссылки
+      return `<a href="${cleanUrl}" target="_blank" rel="noopener noreferrer" style="color: #004a99; text-decoration: underline; font-weight: bold;">${name}</a>`;
+    })
+    
+    // 3. Жирный текст (Markdown **)
+    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+    
+    // 4. Переносы строк БЕЗ лишних div (чтобы текст не наслаивался как на скрине)
     .replace(/\n/g, '<br>');
 
   return formatted;
