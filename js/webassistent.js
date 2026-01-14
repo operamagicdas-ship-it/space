@@ -135,15 +135,25 @@ function addMessage(role, text, replaceLastBot = false) {
  */
 function formatBotText(text) {
   if (!text) return "";
+  let formatted = text
+    // 1. Ссылки: [Название](ссылка) -> <a href="...">
+    .replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, (match, name, url) => {
+      return `<a href="${url}" target="_blank" rel="noopener noreferrer" style="color: #004a99; text-decoration: underline; font-weight: bold;">${name}</a>`;
+    })
+    // 2. Жирный текст: **текст** -> <strong>текст</strong>
+    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+    // 3. Переносы строк: заменяем \n на <br> (это уберет наложение текста)
+    .replace(/\n/g, '<br>');
 
-  // 1. Регулярное выражение находит [текст](ссылка) и делает из него <a href="...">
-  // Оно учитывает отсутствие пробела между ] и (, как требуется в Markdown
+  return formatted;
+
+  /*
   let formatted = text.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, function(match, name, url) {
     return `<a href="${url}" target="_blank" rel="noopener noreferrer" style="color: #004a99; text-decoration: underline; font-weight: bold;">${name}</a>`;
   });
 
   // 2. Превращаем обычные переносы строк в <div> для сохранения структуры
-  return formatted.split('\n').map(line => `<div>${line}</div>`).join('');
+  return formatted.split('\n').map(line => `<div>${line}</div>`).join('');*/
 }
   // --- Приветствие ---
   function getRandomGreeting(lang) {
