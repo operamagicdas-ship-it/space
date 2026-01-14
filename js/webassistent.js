@@ -24,8 +24,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   // --- Настройки чат-бота ---
-     const webhookUrl = "https://n8n.novum-software.de/webhook/2aeebd4b-402c-4da6-9fb7-03506c11f6a8";
-  // const webhookUrl = "https://n8n.novum-software.de/webhook/246f4c72-9dbe-444f-bb81-6e7865afedfe";
+   //  const webhookUrl = "https://n8n.novum-software.de/webhook/2aeebd4b-402c-4da6-9fb7-03506c11f6a8";  //https://n8n.novum-software.de/webhook/246f4c72-9dbe-444f-bb81-6e7865afedfe
+   const webhookUrl = "https://n8n.novum-software.de/webhook/246f4c72-9dbe-444f-bb81-6e7865afedfe";
 
   const greetingMessages = {
     de: [
