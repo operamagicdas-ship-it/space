@@ -220,14 +220,16 @@ async function sendMessage() {
 
    // const data = await res.json().catch(() => ({}));
 
-const text = await res.text();
+// const text = await res.text();
     
 //addMessage('bot', text || getRandomGreeting(currentLang));
-    
+const data = await res.json();    
 
     clearTimeout(typingTimer);
     if (typingDiv) typingDiv.remove();
-      addMessage('bot', text || getRandomGreeting(currentLang));
+      // addMessage('bot', text || getRandomGreeting(currentLang));
+ addMessage('bot', data.output || data.reply);
+    
     // обработка ответа от n8n
   /*  if (data.products && Array.isArray(data.products)) {
       // если вернулся список товаров — карточка/слайдер
