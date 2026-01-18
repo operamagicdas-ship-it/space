@@ -134,14 +134,14 @@
  /* background: linear-gradient(180deg, #169aef54 0%, #ffffff 91%);
   background: linear-gradient(180deg, #d8ef16 0%, #ffffff 91%);
 */
-  background: linear-gradient(180deg, #ffcd3f 0%, #ffffff 91%);
+  background: linear-gradient(180deg, #3fceff 0%, #ffffff 91%);
   scroll-behavior: smooth;
 }
 
 .msg {
   margin: 8px 0;
   width: max-content;
-  max-width: 80%;
+  max-width: 85%;
   padding: 10px 14px;
   border-radius: 14px;
   display: block;
@@ -191,7 +191,7 @@
   background: #fafafa;
 }
 #input input {
-  background: lightyellow;
+  background: #e0f2ff;
   flex: 1;
   font-weight: 400;
   border: none;
