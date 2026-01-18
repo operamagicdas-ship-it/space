@@ -159,6 +159,7 @@
   align-self: flex-end;
   margin-left: auto;
   box-shadow: inset 5px 5px 15px white, 2px 2px 1px #00000026;
+  letter-spacing: 0.2px;
 }
 
 .msg.bot {
