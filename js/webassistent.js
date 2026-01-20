@@ -120,14 +120,29 @@ function addMessage(role, text, replaceLastBot = false) {
 
   const div = document.createElement('div');
   div.className = 'msg ' + (role === 'user' ? 'user' : 'bot');
-
+/*
   if (role === 'bot') {
     // Применяем форматирование для ссылок
     div.innerHTML = formatBotText(text);
   } else {
     div.textContent = text;
   }
-
+*/
+if (role === 'bot') {
+  div.innerHTML = `
+    <div class="bot-row">
+      <div class="bot-avatar">
+        <img src="./images/consult2.jpg" alt="Assistant">
+      </div>
+      <div class="bot-bubble">
+        ${formatBotText(text)}
+      </div>
+    </div>
+  `;
+} else {
+    div.textContent = text;
+  }
+  
   messagesEl.appendChild(div);
   messagesEl.scrollTop = messagesEl.scrollHeight;
   saveChat();
