@@ -291,3 +291,55 @@
     opacity: 1;
   }
 }
+
+/*-----------------------------*/
+/*.msg.bot .bot-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}*/
+
+.msg.bot{
+	white-space: normal;
+}
+.msg.bot .bot-avatar {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+}
+
+.msg.bot .bot-avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+inset: 0;
+}
+
+.msg.bot .bot-bubble {
+  border-radius: 14px;
+  padding: 10px 0px;
+  line-height: 1.4;
+text-indent: 50px;
+}
+
+/*--------------------mcphone---------*/
+#micBtn {
+  touch-action: none;
+  user-select: none;
+}
+#micBtn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  touch-action: none;
+}
+
+#micBtn.listening {
+  color: #1da1f2;
+  transform: scale(1.15);
+}
+
+#micBtn{
+padding: 12px 14px !important;
+}
