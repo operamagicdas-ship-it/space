@@ -132,7 +132,7 @@ if (role === 'bot') {
   div.innerHTML = `
     <div class="bot-row">
       <div class="bot-avatar">
-        <img src="./images/consult2.jpg" alt="Assistant">
+        <img src="./images/consult.jpg" alt="Assistant">
       </div>
       <div class="bot-bubble">
         ${formatBotText(text)}
