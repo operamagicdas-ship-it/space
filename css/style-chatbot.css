@@ -236,7 +236,7 @@
     height: 70vh;
   }
   #chat-avatar {
-    width: 34px;
+  /*  width: 34px;*/
     height: 34px;
   }
   #chat-title {
