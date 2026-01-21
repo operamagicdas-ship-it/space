@@ -29,7 +29,6 @@
   height: 64px;
   border-radius: 50%;
   border: none;
-  /*background: linear-gradient(135deg, #535353, #00c6ff);*/
   background: linear-gradient(135deg, #151515, #5b84e0);
   color: #fff;
   font-size: 28px;
@@ -83,8 +82,8 @@
   width: 32px;
     height: 32px;
     position: absolute;
-    right: 4px;
-    top: 1px;
+    right: 5px;
+    top: 5px;
 }
 
 #chatClose:hover {
@@ -111,13 +110,8 @@
 }
 
 #chat-avatar {
- /* width: 40px;*/
   height: 40px;
- /* border-radius: 50%;*/
   object-fit: cover;
-  /*border: 2px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  background: rgba(255, 255, 255, 0.06);*/
   flex-shrink: 0;
 }
 
@@ -131,9 +125,6 @@
   flex: 1;
   padding: 12px;
   overflow-y: auto;
- /* background: linear-gradient(180deg, #169aef54 0%, #ffffff 91%);
-  background: linear-gradient(180deg, #d8ef16 0%, #ffffff 91%);
-*/
   background: linear-gradient(180deg, #3fceff 0%, #ffffff 91%);
   scroll-behavior: smooth;
 }
@@ -160,6 +151,7 @@
   margin-left: auto;
   box-shadow: inset 5px 5px 15px white, 2px 2px 1px #00000026;
   letter-spacing: 0.2px;
+	border-top-left-radius: 38px;
 }
 
 .msg.bot {
@@ -180,7 +172,7 @@
 }
 
 #messages .msg.bot div div:not(:first-child) {
-  margin-top: -38px; 
+  margin-top: -30px; 
 }
 
 
@@ -236,7 +228,7 @@
     height: 70vh;
   }
   #chat-avatar {
-  /*  width: 34px;*/
+    width: 34px;
     height: 34px;
   }
   #chat-title {
@@ -292,7 +284,13 @@
   }
 }
 
+
+
+
 /*-----------------------------*/
+.msg {
+	margin-bottom: 5px;
+}
 /*.msg.bot .bot-row {
   display: flex;
   align-items: flex-start;
@@ -301,14 +299,12 @@
 
 .msg.bot{
 	white-space: normal;
+	
 }
 .msg.bot .bot-avatar {
-  width: 50px;
-    height: 50px;
-    left: -15px;
-    top: -10px;
-    flex-shrink: 0;
-    position: relative;
+  /*width: 36px;
+  height: 36px;*/
+  flex-shrink: 0;
 }
 
 .msg.bot .bot-avatar img {
@@ -323,7 +319,31 @@ inset: 0;
   border-radius: 14px;
   padding: 10px 0px;
   line-height: 1.4;
-text-indent: 50px;
+/*text-indent: 50px;*/
+}
+.bot-avatar {
+  float: left;
+  width: 50px;
+  height: calc(1.4em * 2);
+  margin-right: 10px;
+  margin-top: -10px;
+  b/*order-radius: 50%;*/
+  object-fit: cover;
+}
+
+/* Текст */
+.bot-text {
+  word-wrap: break-word;
+}
+
+/* СБРОС обтекания */
+.bot-clear {
+  clear: both;
+}
+#messages .msg.bot div div:not(:first-child) {
+    margin-top: -5px;
+	width: 265px;
+    max-width: 100%;
 }
 
 /*--------------------mcphone---------*/
@@ -344,5 +364,5 @@ text-indent: 50px;
 }
 
 #micBtn{
-padding: 12px 14px !important;
+padding: 10px 12px !important;
 }
