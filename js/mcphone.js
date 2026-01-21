@@ -1,11 +1,11 @@
-const SpeechRecognition =
-  window.SpeechRecognition || window.webkitSpeechRecognition;
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
 const recognition = new SpeechRecognition();
-recognition.continuous = true;
+recognition.continuous = false;
 recognition.interimResults = true;
 
-let currentLang = 'de-DE';
+const browserLang = navigator.languages?.[0] || navigator.language || 'de-DE';
+let currentLang = browserLang;
 recognition.lang = currentLang;
 
 const micBtn = document.getElementById('micBtn');
@@ -14,21 +14,7 @@ const userInput = document.getElementById('userInput');
 let isListening = false;
 let finalText = '';
 let dotsTimer = null;
-let languageDetected = false;
 
-/* ===== Language detection ===== */
-function detectLanguage(text) {
-  const t = text.toLowerCase();
-
-  if (/[а-яё]/.test(t)) return 'ru-RU';
-  if (/[äöüß]/.test(t)) return 'de-DE';
-  if (/[àâçéèêëîïôûùüÿœæ]/.test(t)) return 'fr-FR';
-  if (/[áéíóúñ¿¡]/.test(t)) return 'es-ES';
-  if (/[àèéìíîòóù]/.test(t)) return 'it-IT';
-  if (/[a-z]/.test(t)) return 'en-US';
-
-  return currentLang;
-}
 
 /* ===== Dots UI ===== */
 function startDots() {
@@ -51,8 +37,8 @@ function startListening() {
 
   isListening = true;
   languageDetected = false;
-  finalText = userInput.value.trim();
-
+  //finalText = userInput.value.trim();
+  finalText = '';
   micBtn.classList.add('listening');
   startDots();
 
@@ -97,166 +83,13 @@ recognition.onresult = (event) => {
     }
   }
 
-  // автоопределение языка (один раз)
-  if (!languageDetected && (finalText + interim).length > 5) {
-    const detectedLang = detectLanguage(finalText + interim);
-
-    if (detectedLang !== recognition.lang) {
-      languageDetected = true;
-      currentLang = detectedLang;
-
-      recognition.stop();
-
-      setTimeout(() => {
-        recognition.lang = detectedLang;
-        recognition.start();
-      }, 200);
-
-      return;
-    }
-
-    languageDetected = true;
-  }
-};
-
-recognition.onerror = () => {
-  stopListening();
-};
-
-
-/*
-<script>
-const SpeechRecognition =
-  window.SpeechRecognition || window.webkitSpeechRecognition;
-
-const recognition = new SpeechRecognition();
-recognition.lang = 'ru-RU';
-recognition.continuous = true;
-recognition.interimResults = true;
-
-const micBtn = document.getElementById('micBtn');
-const userInput = document.getElementById('userInput');
-
-let isListening = false;
-let finalText = '';
-let dotsInterval = null;
-
-function showDots() {
-  let dots = '';
-  dotsInterval = setInterval(() => {
-    dots = dots.length < 3 ? dots + '●' : '';
-    userInput.value = finalText + ' ' + dots;
-  }, 350);
-}
-
-function hideDots() {
-  clearInterval(dotsInterval);
-  dotsInterval = null;
-}
-
-function startListening() {
-  if (isListening) return;
-
-  isListening = true;
-  finalText = userInput.value.trim();
-  micBtn.classList.add('listening');
-
-  userInput.value = finalText + ' ●';
-  showDots();
-
-  try {
-    recognition.start();
-  } catch (e) {}
-}
-
-function stopListening() {
-  if (!isListening) return;
-
-  isListening = false;
-  micBtn.classList.remove('listening');
-  hideDots();
-  recognition.stop();
-}
-
-micBtn.addEventListener('pointerdown', startListening);
-micBtn.addEventListener('pointerup', stopListening);
-micBtn.addEventListener('pointerleave', stopListening);
-micBtn.addEventListener('pointercancel', stopListening);
-
-recognition.onresult = (event) => {
-  for (let i = event.resultIndex; i < event.results.length; i++) {
-    if (event.results[i].isFinal) {
-      finalText += ' ' + event.results[i][0].transcript;
-    }
-  }
-};
-
-recognition.onerror = () => {
-  stopListening();
-};
-</script>
-*/
-
-
-
-
-
-/*  const SpeechRecognition =
-    window.SpeechRecognition || window.webkitSpeechRecognition;
-
-  if (!SpeechRecognition) {
-    console.error('SpeechRecognition не поддерживается');
-  }
-
-  const recognition = new SpeechRecognition();
-  recognition.lang = 'ru-RU';
-  recognition.continuous = true;
-  recognition.interimResults = true;
-
-  const micBtn = document.getElementById('micBtn');
-  const userInput = document.getElementById('userInput');
-
-  let isListening = false;
-  let finalText = '';
-
-  function startListening() {
-    if (isListening) return;
-    isListening = true;
-    finalText = userInput.value || '';
-    recognition.start();
-    micBtn.classList.add('listening');
-  }
-
-  function stopListening() {
-    if (!isListening) return;
-    isListening = false;
-    recognition.stop();
-    micBtn.classList.remove('listening');
-  }
-
  
-  micBtn.addEventListener('pointerdown', startListening);
-  micBtn.addEventListener('pointerup', stopListening);
-  micBtn.addEventListener('pointerleave', stopListening);
-  micBtn.addEventListener('pointercancel', stopListening);
+userInput.value = finalText + interim;
 
-  recognition.onresult = (event) => {
-    let interim = '';
+};
 
-    for (let i = event.resultIndex; i < event.results.length; i++) {
-      const transcript = event.results[i][0].transcript;
-      if (event.results[i].isFinal) {
-        finalText += transcript + ' ';
-      } else {
-        interim += transcript;
-      }
-    }
+recognition.onerror = () => {
+  stopListening();
+};
 
-    userInput.value = finalText + interim;
-  };
 
-  recognition.onerror = (e) => {
-    console.error('Speech error:', e.error);
-    stopListening();
-  };
-*/
