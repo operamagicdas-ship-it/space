@@ -390,8 +390,8 @@ body {
 */
 .puls .support-button {
   position: fixed;
-  bottom: 24px;
-  right: 24px;
+  bottom: 64px;
+  right: 64px;
   width: 56px;
   height: 56px;
   border-radius: 50%;
