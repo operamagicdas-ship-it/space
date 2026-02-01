@@ -303,7 +303,7 @@
 
 .msg.bot{
 	white-space: normal;
-	
+	border-top-right-radius: 70px;
 }
 .msg.bot .bot-avatar {
   /*width: 36px;
