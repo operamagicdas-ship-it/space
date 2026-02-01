@@ -433,7 +433,7 @@ body {
   width: 6px;
   height: 64px;
   border-radius: 50%;
-  background: var(--prymary-color);
+  background: #00ff66;
   animation: bounce 1.4s infinite ease-in-out both;
 }
 
@@ -488,7 +488,7 @@ body {
   background: linear-gradient(45deg, #777, #fff);
   background: linear-gradient(307deg, #151515, #5b84e0);
   border-radius: 14px;
-  box-shadow: inset -5px -5px 12px #00000073, 0 0px 18px var(--prymary-color);
+  box-shadow: inset -5px -5px 12px #00000073, 0 0px 18px #00ff66;
   padding: 30px 35px 15px;
   display: none;
   z-index: 1999;
@@ -538,7 +538,7 @@ body {
   cursor: pointer;
   margin-bottom: 12px;
   border: none;
-  box-shadow: inset 0px 0px 25px #000, 1px 1px 2px var(--prymary-color);
+  box-shadow: inset 0px 0px 25px #000, 1px 1px 2px #00ff66;
 }
 .puls .icon-row {
   display: flex;
@@ -568,7 +568,7 @@ body {
 
 .puls .option-btn:hover {
   /* background: #000000; */
-  box-shadow: inset 0px 0px 25px #000, 2px 4px 6px var(--prymary-color);
+  box-shadow: inset 0px 0px 25px #000, 2px 4px 6px #00ff66;
   color: #62ff00;
   /* transform: translateX(4px); */
 }
